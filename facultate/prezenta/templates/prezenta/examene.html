@@ -1,0 +1,26 @@
+{% extends 'prezenta/layout.html' %}
+{% block title %} Examene {% endblock %}
+
+{% block body %} 
+<div class="container">
+   <h1>Programarea examenelor:</h1>
+   <div>
+      <form action="{% url 'examene' %}" method="POST">
+         {% csrf_token %}
+         <label for="grupa">Grupa</label>
+         <select name="grupa"  id="">
+            {% for grupa in grupe %}
+            <option value="{{grupa.id}}">{{grupa.grupa}}</option>
+            {% endfor %}
+         </select>
+         <button class="btn btn-success" type="submit">Genereaza</button>
+      </form>
+   </div>
+   
+
+   <div class="programare">
+      
+   </div>
+
+</div>
+{% endblock %}

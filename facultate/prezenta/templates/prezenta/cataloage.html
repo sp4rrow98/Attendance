@@ -1,0 +1,12 @@
+
+{% extends 'prezenta/layout.html' %}{% load static %} {% block title %} Cataloage {% endblock %}
+{% load static %}
+{% block body %}
+<!-- Component script -->
+<script type="text/babel" src="{% static 'prezenta/cataloage.js' %}"></script>
+<!-- Content -->
+<h1 class="text-center mt-3 pb-1">Catalogul facultatilor:</h1>
+<!-- Component cointainer -->
+<div id="cataloage" class="mb-7"></div>
+
+{% endblock %}

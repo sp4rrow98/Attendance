@@ -1,0 +1,237 @@
+{% extends 'prezenta/layout.html' %} {% load static %} {% block title %}
+Profesori {% endblock %} {% block body %}
+<!--  -->
+{% if messages %}
+<!--  -->
+{% for message in messages %}
+<div
+	class="alert  alert-{{ message.tags }} d-flex text-bold pt-3 align-items-center alert-dismissible fade show text-center"
+	role="alert"
+	id="alert-index"
+>
+	<svg
+		class="bi flex-shrink-0 me-2"
+		width="24"
+		height="24"
+		role="img"
+		aria-label="Info:"
+	>
+		<use xlink:href="#info-fill" />
+	</svg>
+	<div class="text-center">{{ message }}</div>
+	<button
+		type="button"
+		class="btn-close ml-auto"
+		data-bs-dismiss="alert"
+		aria-label="Close"
+	></button>
+</div>
+{% endfor %} {% endif %}
+
+<div class="mb-9">
+	<h1 id="facultate" class="text-center m-5">Adauga Facultate</h1>
+	<!-- Adauga FACULTATE -->
+	<div class="adauga_facultate_view" style="display: none">
+		<form action="{% url 'adauga_facultate' %}" method="POST">
+			{% csrf_token %}
+			<div class="row justify-content-center align-items-center">
+				<label for="nume" class="col-3">Nume:</label>
+				<input type="text" class="col-7" name="facultate" autocomplete="off"/>
+			</div>
+
+			<div class="d-flex justify-content-center mt-3">
+				<button class="btn btn-success text-center mb-4">Adauga</button>
+			</div>
+		</form>
+	</div>
+	<!-- Adauga SPECIALIZARE -->
+	<h1 class="text-center m-5" id="specializare">Adauga specializare</h1>
+	<div class="adauga_specializare_view" style="display: none">
+		<form action="{% url 'adauga_specializare' %}" method="POST">
+			{% csrf_token %}
+			<div class="row justify-content-center align-items-center">
+				<label for="specializare" class="col-3">Specializare:</label>
+				<input type="text" class="col-7" name="specializare" autocomplete="off" />
+			</div>
+			<div class="row justify-content-center align-items-center">
+				<label for="facultate" class="col-3">Facultate:</label>
+				<select name="facultate" id="" class="col-7 mt-3 text-center">
+					{% for facultate in facultati %}
+					<option value="{{ facultate.id }}">{{facultate}}</option>
+					{% endfor %}
+				</select>
+				<label for="grupa" class="col-3">Grupa</label>
+				<input type="number" class="col-7 mt-3" name="grupa" />
+			</div>
+			<div class="row justify-content-center align-items center mt-3">
+				<label for="an" class="col-3">An</label>
+				<select name="an" id="" class="col-7 text-center">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+				</select>
+			</div>
+			<div class="d-flex justify-content-center mt-3">
+				<button class="btn btn-success text-center mb-4">Adauga</button>
+			</div>
+		</form>
+	</div>
+	<!-- Adauga MATERIE -->
+	<h1 class="text-center m-5" id="materie">Adauga materie</h1>
+	<div class="adauga_materie_view" style="display: none">
+		<form action="{% url 'adauga_materie' %}" method="POST">
+			{% csrf_token %}
+			<div class="materie row justify-content-center align-items-center">
+				<label for="materie" class="col-3">Nume Materie</label>
+				<input type="text" class="col-7 text-center" name="materie" autocomplete="off" />
+			</div>
+
+			<div
+				class="row metoda_de_predare row align-items-center justify-content-center mt-2"
+			>
+				<label for="metoda de predare" class="col-3">Metoda de predare</label>
+				<select name="metoda_de_predare" class="col-7" id="">
+					<option value="Curs">Curs</option>
+					<option value="Lab">Laborator</option>
+					<option value="Sem">Seminar</option>
+				</select>
+			</div>
+			<div
+				class="row profesor row align-items-center justify-content-center mt-2"
+			>
+				<label for="profesor" class="col-3">Profesor</label>
+				<select name="profesor" class="col-7" id="">
+					<option value="None" selected>Aleg mai tarziu</option>
+					{% for profesor in profesori %}
+					<option value="{{profesor.id}}">{{profesor}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div
+				class="row specializare profesor align-items-center justify-content-center mt-2"
+			>
+				<label for="specializare" class="col-3">Specializare</label>
+				<select name="specializare" id="" class="col-7" multiple>
+					{% for specializare in specializari %}
+					<option value="{{specializare.id}}">{{specializare}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div class="d-flex justify-content-center mt-3">
+				<button class="btn btn-success text-center mb-4">Adauga</button>
+			</div>
+		</form>
+	</div>
+
+	<!-- Adauga restanta unui student-->
+	<h1 class="text-center m-5" id="materie_student">
+		Adauga restanta unui student
+	</h1>
+	<div class="adauga_materie_student_view" style="display: none">
+		<form action="{% url 'adauga_materie_student' %}" method="POST">
+			{% csrf_token %}
+			<div class="materie row justify-content-center align-items-center">
+				<label for="student" class="col-3">Student</label>
+				<input
+					type="text"
+					name="student_adauga_materie"
+					class="col-7 student"
+					autocomplete="off"
+				/>
+				<div class="student_adauga_materie"></div>
+			</div>
+			<div class="materie row justify-content-center align-items-center mt-2">
+				<label for="materie" class="col-3">Materie</label>
+				<select name="materie" class="materie_adauga_student col-7" multiple>
+
+				</select>
+			</div>
+			<div
+				class="row profesor row align-items-center justify-content-center mt-2"
+			>
+				<label for="profesor" class="col-3">Profesor</label>
+				<select name="profesor" class="col-7" id="">
+					<option value="" selected>Aleg mai tarziu</option>
+					{% for profesor in profesori %}
+					<option value="{{profesor.id}}">{{profesor}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div class="d-flex justify-content-center mt-3">
+				<button class="btn btn-success text-center mb-4">Adauga</button>
+			</div>
+		</form>
+	</div>
+
+	<!-- Adauga profesor unei materii -->
+	<h1 class="profesor_materie text-center m-5">Adauga profesor unei materii</h1>
+	<div class="adauga_profesor_view" style="display: none">
+		<form action="{% url 'profesor_materie' %}" method="POST">
+			{% csrf_token %}
+			<div class="materie row justify-content-center align-items-center">
+				<label for="student" class="col-3">Profesor</label>
+				<select name="profesor" id="" class="col-7">
+					{% for profesor in profesori %}
+					<option value="{{profesor.id}}">{{profesor}}</option>
+					{% endfor %}
+				</select>
+				<div class="student_adauga_materie"></div>
+			</div>
+			<div class="materie row justify-content-center align-items-center mt-2">
+				<label for="materie" class="col-3">Materie</label>
+				<select name="materie" class="materie_adauga_student col-7" multiple>
+					{% for materie in materii %}
+					<option value="{{materie.id}}">{{materie}}</option>
+					{% endfor %}
+				</select>
+			</div>
+			<div class="d-flex justify-content-center mt-3">
+				<button class="btn btn-success text-center mb-4">Adauga</button>
+			</div>
+		</form>
+	</div>
+
+	<!-- Adauga NOTE -->
+	<h1 class="text-center m-5" id="note">Adauga note</h1>
+	<div class="adauga_note_view" style="display: none">
+		<form action="{% url 'adauga_note' %}" method="POST">
+			{% csrf_token %}
+			<div class="justify-content-center row align-items-center">
+				<label for="student" class="col-3">Student</label>
+				<input
+					type="text"
+					class="col-7"
+					id="student-input"
+					name="student"
+					autocomplete="off"
+				/>
+				<div id="student-list"></div>
+			</div>
+			<div class="row justify-content-center align-items-center mt-3">
+				<label for="" class="col-3">Materie</label>
+				<select name="materie" id="materie-options" class="col-7"></select>
+			</div>
+
+			<div
+				class="row justify-content-center align-items-center mt-3"
+				id="nota-div"
+			>
+				<label for="nota" class="col-3"> Nota </label>
+				<input type="number" min="1" max="10" class="col-7" name="nota" autocomplete="off" />
+			</div>
+
+			<div class="d-flex justify-content-center mt-3">
+				<button class="btn btn-success text-center mb-4">Adauga</button>
+			</div>
+		</form>
+	</div>
+</div>
+<script
+	src="{% static 'prezenta/panel.js' %}"
+	type="application/javascript"
+></script>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'prezenta/layout.html' %}
+<!--  -->
+{% block title %} Cont {% endblock %}
+<!--  -->
+{% block body %}
+<div class="text-center mt-4">
+  <h1>
+    <b><i>{{user}}</i></b>
+    <hr>
+    {% if user.is_superuser %}
+    (profesor)
+    {% else %}
+    (student)
+    {% endif %}
+  </h1>
+</div>
+<div class="container mt-3">
+  {% for materie in materii %} {{materie}} {% endfor %}
+  <div class="row"></div>
+  <div class="row">
+    <!-- De facut cu javascript -->
+    <!--  -->
+  </div>
+  <div class="row"></div>
+</div>
+
+{% endblock %}
+<!--  -->

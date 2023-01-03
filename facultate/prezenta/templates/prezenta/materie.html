@@ -1,0 +1,48 @@
+{% extends 'prezenta/layout.html' %} {% block title %} Materie {% endblock %}
+
+<!--  -->
+{% load static %} {% block body %}
+
+<script type="text/babel" src="{% static 'prezenta/prezenta.js' %}"></script>
+<script
+	type="text/babel"
+	src="{% static 'prezenta/lista_asteptare.js' %}"
+></script>
+<!-- "studenti" variable for students -->
+<div class="title-prezenta">
+	<h1 class="text-center pt-3 info-group">
+		{{ materia.nume_materie }} ({{materia.metoda_de_predare}})
+	</h1>
+</div>
+
+<!-- Buton de deschidere prezenta -->
+{% if request.user.profesor %}
+<form action="{% url 'prezenta_timing' %}" method="POST">
+	{% csrf_token %}
+	<input type="hidden" value="{{url}}" name="url" />
+	<div class="container mt-2">
+		<div class="row d-flex justify-content-center">
+			<button
+				class="btn {% if materia.open %} btn-danger {% else %} btn-primary {% endif %} btn-lg btn-block text-center"
+			>
+				{% if materia.open %} Opreste prezenta {% else %} Permite prezenta
+				 {% endif %}
+			</button>
+		</div>
+	</div>
+</form>
+<!-- Lista de asteptare -->
+<div id="lista_asteptare" class="container">
+	<!-- R -->
+</div>
+{% endif %}
+
+<!-- React -->
+<div id="prezenta" class="mb-5"></div>
+
+{{materia.specializare.grupa|json_script:"grupa"}}
+{{materia.metoda_de_predare|json_script:"metoda"}}
+{{materia.nume_materie|json_script:"name"}}
+{{materia.id|json_script:"materie_id"}}
+{{request.user.profesor|json_script:"profesor"}}
+{{user.profesor|json_script:"profesor"}} {% endblock %}

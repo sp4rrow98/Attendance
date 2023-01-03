@@ -1,0 +1,565 @@
+body {
+	background-color: #d3d3d3;
+	overflow-x: hidden;
+}
+
+body > * {
+	overflow-x: hidden;
+}
+
+a {
+	text-decoration: #0d3f63;
+}
+
+.login-msg {
+	height: calc(100vh - 56px);
+	font-style: oblique;
+	font-weight: 900;
+	font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+a:hover {
+	color: #144466;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+	color: #fff;
+	background-color: #212529;
+}
+
+/* Inputs */
+input {
+	border-color: #195580 !important;
+}
+
+input:focus {
+	box-shadow: 0 0 3px #195580 !important;
+	outline: none !important;
+}
+
+/* Stripped table edit bootstrap  */
+/* Odd numbers */
+
+.table-striped > tbody > tr:nth-child(odd) > td,
+.table-striped > tbody > tr:nth-child(odd) > th {
+	background-color: #212529;
+	color: #d3d3d3;
+	font-weight: 500;
+}
+
+/* Even numbers */
+.table-striped > tbody > tr:nth-child(even) > td,
+.table-striped > tbody > tr:nth-child(even) > th {
+	background-color: white;
+	font-weight: 500;
+	color: #212529;
+}
+
+/* REACT CURRENT STYLES */
+/* Indend paragraphs */
+p {
+	text-indent: 2rem;
+}
+
+.no-indent {
+	text-indent: 0;
+}
+
+ul {
+	list-style-type: none;
+}
+
+.btn-prezenta {
+	background-color: #ebf5ee !important;
+	color: #212529 !important;
+}
+
+.btn-set-prezent {
+	background-color: #0d3f63;
+	border-color: #212529;
+	color: #ebf5ee;
+}
+
+.btn-set-prezent:hover {
+	background-color: #062841;
+	border-color: #212529;
+	color: white;
+}
+
+.last-th {
+	margin-right: 8px !important;
+}
+
+/* ANIMATIONS AND ICONS + STYLES FOR COMPONENTS */
+
+.checkmark {
+	width: 25px;
+	height: 25px;
+	border-radius: 50%;
+	display: block;
+	stroke-width: 5;
+	stroke: #fff;
+	stroke-miterlimit: 10;
+	margin: 0.4rem auto;
+	box-shadow: inset 0px 0px 0px #0783a7;
+	z-index: 2;
+	opacity: 0;
+}
+
+.checkmark-circle {
+	stroke-dasharray: 166;
+	stroke-dashoffset: 166;
+	stroke-width: 5;
+	stroke-miterlimit: 10;
+	stroke: #0783a7;
+	fill: none;
+}
+
+.checkmark-check {
+	transform-origin: 50% 50%;
+	stroke-dasharray: 70;
+	stroke-dashoffset: 70;
+}
+
+@keyframes stroke {
+	100% {
+		stroke-dashoffset: 0;
+	}
+}
+
+@keyframes scale {
+	0%,
+	100% {
+		transform: none;
+	}
+	50% {
+		transform: scale3d(1.1, 1.1, 1);
+	}
+}
+
+@keyframes fill {
+	100% {
+		box-shadow: inset 0px 0px 0px 100px #0783a7;
+	}
+}
+
+.checkmark.fadeIn {
+	opacity: 1;
+	transition: all 0.8s ease;
+	animation: fill 0.4s ease-in-out 0.4s forwards,
+		scale 0.3s ease-in-out 0.9s both;
+}
+
+.checkmark.fadeIn .checkmark-circle {
+	animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.checkmark.fadeIn .checkmark-check {
+	animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+}
+
+/* "cataloage" Components for react */
+
+@keyframes show {
+	0% {
+		display: none;
+	}
+	100% {
+		display: block;
+	}
+}
+
+.specializare-distancing {
+	padding-top: 1rem !important;
+}
+
+.specializare-diff {
+	margin-top:10px;
+}
+
+.header-university {
+	background-color: #dfdfdf;
+	border-bottom: 2px solid #195580;
+	border-left: 2px solid #195580;
+	border-right: 2px solid #195580;
+	font-weight: 500;
+}
+
+.header-university:hover {
+	transition: ease-out 0.3s;
+	background-color: #195580;
+	color: white;
+}
+
+.hoveredState {
+	background-color: #195580;
+	color: white;
+}
+
+.container-university {
+	display: none;
+}
+
+@keyframes dissapear {
+	0% {
+		height: 70%;
+		display: block;
+		opacity: 1;
+	}
+
+	50% {
+		opacity: 0.5;
+		height: 0px;
+	}
+
+	100% {
+		opacity: 0;
+		position: absolute;
+		letter-spacing: -0.5em;
+		margin-left: 100%;
+		height: 0;
+		line-height: 0;
+		visibility: hidden;
+	}
+}
+
+@keyframes appear {
+	0% {
+		margin-left: -100%;
+		display: block;
+		opacity: 0;
+		height: 0px;
+		line-height: 0px;
+		padding: 0px;
+	}
+
+	25% {
+		opacity: 0.1;
+	}
+
+	75% {
+		opacity: 0.5;
+	}
+	100% {
+		margin-left: 0;
+		opacity: 1;
+		height: 100%;
+		line-height: 100%;
+	}
+}
+
+.hidden-container {
+	display: none;
+	z-index: 2;
+	visibility: hidden;
+}
+
+.appear {
+	animation-name: appear;
+	animation-duration: 0.6s;
+	animation-fill-mode: forwards;
+}
+
+.dissapear {
+	animation-name: dissapear;
+	animation-duration: 0.6s;
+	animation-fill-mode: forwards;
+}
+
+.fa-angle-down {
+	color: #0d3f63;
+}
+
+/* Loading animation */
+
+.sk-chase {
+	width: 40px;
+	height: 40px;
+	position: relative;
+	animation: sk-chase 2.5s infinite linear both;
+}
+
+.sk-chase-dot {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	animation: sk-chase-dot 2s infinite ease-in-out both;
+}
+
+.sk-chase-dot:before {
+	content: "";
+	display: block;
+	width: 25%;
+	height: 25%;
+	background-color: black;
+	border-radius: 100%;
+	animation: sk-chase-dot-before 2s infinite ease-in-out both;
+}
+
+.sk-chase-dot:nth-child(1) {
+	animation-delay: -1.1s;
+}
+.sk-chase-dot:nth-child(2) {
+	animation-delay: -1s;
+}
+.sk-chase-dot:nth-child(3) {
+	animation-delay: -0.9s;
+}
+.sk-chase-dot:nth-child(4) {
+	animation-delay: -0.8s;
+}
+.sk-chase-dot:nth-child(5) {
+	animation-delay: -0.7s;
+}
+.sk-chase-dot:nth-child(6) {
+	animation-delay: -0.6s;
+}
+.sk-chase-dot:nth-child(1):before {
+	animation-delay: -1.1s;
+}
+.sk-chase-dot:nth-child(2):before {
+	animation-delay: -1s;
+}
+.sk-chase-dot:nth-child(3):before {
+	animation-delay: -0.9s;
+}
+.sk-chase-dot:nth-child(4):before {
+	animation-delay: -0.8s;
+}
+.sk-chase-dot:nth-child(5):before {
+	animation-delay: -0.7s;
+}
+.sk-chase-dot:nth-child(6):before {
+	animation-delay: -0.6s;
+}
+
+@keyframes sk-chase {
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes sk-chase-dot {
+	80%,
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes sk-chase-dot-before {
+	50% {
+		transform: scale(0.4);
+	}
+	100%,
+	0% {
+		transform: scale(1);
+	}
+}
+
+.bordered {
+	border: 1px #144466;
+	border-style: solid;
+}
+
+.student-container {
+	background-color: #fff;
+	font-weight: 550;
+}
+
+.student-container:hover {
+	background-color: #195580;
+	color: white;
+	transition: 0.3s;
+}
+
+.container-prezenta {
+	background-color: #dfdfdf;
+}
+
+.specializare-distancing {
+	border-bottom: 2px solid #195580;
+}
+
+/* ADAUGA MATERIE VIEW */
+.adauga_materie_view {
+	background-color: #dfdfdf;
+	padding-top: 30px;
+	display: none;
+}
+
+/* Materie anim */
+@keyframes materie-anim {
+	0% {
+		width: 0;
+		height: 0;
+	}
+	40% {
+		width: 40%;
+		height: 40%;
+	}
+	100% {
+		width: 100%;
+		height: 100%;
+	}
+}
+
+/* ADAUGA FACULTATE */
+.adauga_facultate_view {
+	background-color: #dfdfdf;
+	padding-top: 30px;
+	display: none;
+}
+/* ADAUGA SPECIALIZARE */
+.adauga_specializare_view {
+	background-color: #dfdfdf;
+	padding-top: 30px;
+	display: none;
+}
+/* ADAUGA MATERIE VIEW */
+.adauga_note_view {
+	background-color: #dfdfdf;
+	padding-top: 30px;
+	margin-bottom: 4rem;
+	display: none;
+}
+
+.adauga_materie_student_view {
+	background-color: #dfdfdf;
+	padding-top: 30px;
+	display: none;
+}
+
+#materie {
+	border: 1px solid black;
+	padding: 20px;
+}
+#facultate {
+	border: 1px solid black;
+	padding: 20px;
+}
+#specializare {
+	border: 1px solid black;
+	padding: 20px;
+}
+#note {
+	border: 1px solid black;
+	padding: 20px;
+}
+#materie_student {
+	border: 1px solid black;
+	padding: 20px;
+}
+.profesor_materie {
+	border: 1px solid black;
+	padding: 20px;
+}
+
+#img-error {
+	background: url("/static/images/grumpy.png") no-repeat center;
+	width: 100%;
+	height: 800px;
+	margin-top: 20px;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#error-text {
+	color: #062841;
+	font-weight: 800;
+}
+
+.autocomplete-items div:not(.space) {
+	padding: 5px;
+	cursor: pointer;
+	background-color: #fff;
+	border-bottom: 1px solid #d4d4d4;
+	text-align: center;
+	border-left: #195580 1px solid;
+	border-bottom: #195580 1px solid;
+	border-right: #195580 1px solid;
+}
+
+.autocomplete-items div:hover:not(.space) {
+	/*when hovering an item:*/
+	background-color: #e9e9e9;
+}
+
+.active-student {
+	background-color: #b6babe !important;
+}
+
+.inactive-student {
+	background-color: #dce1e6 !important;
+}
+
+.inactive-student:hover {
+	background-color: #b0b0b0 !important;
+}
+
+#login-wrap {
+	background: #eb01a5;
+	background: linear-gradient(rgba(33, 37, 41, 0.8), rgba(255, 255, 255, 0.1)),
+		url("/static/images/inginerie.jpg"), no-repeat;
+	background-position: center;
+	background-size: cover;
+	min-width: 300px;
+	min-height: 300px;
+	max-width: 100%;
+	max-height: 100%;
+}
+
+table {
+	border-collapse: separate;
+	border-spacing: 0 1rem;
+	width: 100%;
+}
+
+.margin-catalog {
+	margin-top: 30px;
+}
+
+/* Footer */
+.footer {
+	z-index: 222 !important;
+	border-top: #0783a7 solid 3px;
+	margin: 0;
+	white-space: nowrap;
+	display: flex;
+	text-align: center;
+	align-items: center;
+	overflow-x: auto;
+	width: 100%;
+	height: 50px;
+	background-color: #212529;
+	color: #fff;
+	position: fixed;
+	bottom: 0;
+}
+
+.footer > div:first-child {
+	margin-left: 5px;
+}
+.footer > div:last-child {
+	margin-right: 100px;
+}
+
+.nodecorator {
+	text-decoration: none;
+	box-shadow: none;
+	color: rgb(33, 37, 41);
+}
+
+.adauga_profesor_view {
+	background-color: #dfdfdf;
+	padding-top: 30px;
+	display: none;
+}
+
+.fa-xl:hover {
+	cursor: pointer;
+}

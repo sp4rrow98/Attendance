@@ -1,0 +1,13 @@
+{% extends 'prezenta/layout.html' %}
+<!-- Title page -->
+{% block title %}Facultati{% endblock %}
+<!-- Page content -->
+{% block body %}
+<!-- Content -->
+{% load static %}
+<h1 class="text-center my-4">Lista facultati:</h1>
+<div id="facultati" class="mb-5"></div>
+<script type="text/babel" src="{% static 'prezenta/facultati.js' %}"></script>
+
+
+{% endblock %}

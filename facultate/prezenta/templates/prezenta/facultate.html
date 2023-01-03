@@ -1,0 +1,39 @@
+<!-- Extension of -->
+{% extends 'prezenta/layout.html' %}
+<!-- Title of the page -->
+{% block title %} {{facultate}} {% endblock %}
+<!-- Content of the page -->
+{% block body %}
+<!-- Content -->
+{% if message %} {{ message }} {% endif %}
+<div class="container mt-3 mb-4 text-center"><h3>Facultatea</h3><h3 class="keyword">{{facultate}}</h3>
+	</div>
+<div id="adauga_specializare">
+	<form action="{% url 'facultate' facultate.id %}" method="post">
+		{% csrf_token %}
+		<div class="d-flex">
+			<label for="denumirea specializarii " class="col-4 text-center"
+				>Denumirea specializarii</label
+			>
+			<input type="text" class="col-8" name="specializare" />
+		</div>
+		<div class="d-flex mt-2">
+			<label for="grupa" class="col-4 text-center">Grupa</label>
+			<input type="number" class="col-4" name="grupa" />
+			<div
+				class="col-4 text-center"
+			>
+				<label for="an">Anul</label>
+				<select name="an" class="mt-1">
+					<option value="1">Intai</option>
+					<option value="2">Doi</option>
+					<option value="3">Trei</option>
+					<option value="4">Patru</option>
+				</select>
+			</div>
+		</div>
+		<button class="btn btn-block btn-primary d-block col-6 mx-auto  mt-3"	id="btn-submit">Trimite</button>
+	</form>
+</div>
+
+{% endblock %}
